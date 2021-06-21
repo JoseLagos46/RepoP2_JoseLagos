@@ -7,6 +7,7 @@ package repop2_joselagos;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,7 @@ public class Main extends javax.swing.JFrame {
         model.addElement("Hack Regular");
         model.addElement("Super Hack");
         cb_Tipo.setModel(model);
+
     }
 
     /**
@@ -66,6 +68,16 @@ public class Main extends javax.swing.JFrame {
         rdb_Mod10s = new javax.swing.JRadioButton();
         btn_Super = new javax.swing.JButton();
         riskS = new javax.swing.ButtonGroup();
+        jd_Simulacion = new javax.swing.JDialog();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        cb_SimulacionR = new javax.swing.JComboBox<>();
+        pb_BarraRegular = new javax.swing.JProgressBar();
+        jButton3 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        cb_Simulacions = new javax.swing.JComboBox<>();
+        pb_BarraSuper = new javax.swing.JProgressBar();
+        jButton2 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -92,6 +104,8 @@ public class Main extends javax.swing.JFrame {
         jt_Super = new javax.swing.JTable();
         btn_ModSHack = new javax.swing.JButton();
         btn_EliminarSHack = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         jd_ModR.setTitle("Modificar");
 
@@ -264,7 +278,103 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
+        jd_Simulacion.setTitle("Simulacion");
+
+        pb_BarraRegular.setStringPainted(true);
+
+        jButton3.setText("Test");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pb_BarraRegular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(cb_SimulacionR, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(cb_SimulacionR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(pb_BarraRegular, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+
+        jTabbedPane3.addTab("Simulacion Hackeo Regular", jPanel5);
+
+        pb_BarraSuper.setStringPainted(true);
+
+        jButton2.setText("Test");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pb_BarraSuper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(cb_Simulacions, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(244, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(cb_Simulacions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(pb_BarraSuper, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+
+        jTabbedPane3.addTab("Simulacion Super Hackeo", jPanel6);
+
+        javax.swing.GroupLayout jd_SimulacionLayout = new javax.swing.GroupLayout(jd_Simulacion.getContentPane());
+        jd_Simulacion.getContentPane().setLayout(jd_SimulacionLayout);
+        jd_SimulacionLayout.setHorizontalGroup(
+            jd_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane3)
+        );
+        jd_SimulacionLayout.setVerticalGroup(
+            jd_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane3)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Lab Reposicion");
 
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -532,6 +642,16 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Listar/Modificar", jPanel2);
 
+        jMenu1.setText("Simulación");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -631,7 +751,7 @@ public class Main extends javax.swing.JFrame {
         rdb_3.setSelected(true);
         rdb_4.setSelected(false);
         rdb_5.setSelected(false);
-        
+
     }//GEN-LAST:event_btn_GuardarMouseClicked
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
@@ -771,8 +891,8 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
 
         }
-        
-        jt_Regulaes.setModel(new javax.swing.table.DefaultTableModel( new Object[][]{}, new String[]{ "Codigo", "Nivel de Riesgo", "Hackeos Exitosos"}
+
+        jt_Regulaes.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Codigo", "Nivel de Riesgo", "Hackeos Exitosos"}
         ) {
             Class[] types = new Class[]{
                 java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
@@ -797,13 +917,13 @@ public class Main extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, "El sistema de hackeo ha sido modificado");
         jd_ModR.dispose();
-        
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void btn_EliminarRHackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarRHackMouseClicked
         AdminHackeo h = new AdminHackeo("./Regulares.txt");
         h.leerArchivoRegular();
-        
+
         DefaultTableModel model = (DefaultTableModel) jt_Regulaes.getModel();
 
         for (int i = 0; i < h.getHacks_R().size(); i++) {
@@ -812,11 +932,11 @@ public class Main extends javax.swing.JFrame {
                     h.getHacks_R().remove(i);
                     h.crearArchivoRegular();
                 } catch (IOException ex) {
-                    
+
                 }
             }
         }
-        jt_Regulaes.setModel(new javax.swing.table.DefaultTableModel( new Object[][]{}, new String[]{ "Codigo", "Nivel de Riesgo", "Hackeos Exitosos"}
+        jt_Regulaes.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Codigo", "Nivel de Riesgo", "Hackeos Exitosos"}
         ) {
             Class[] types = new Class[]{
                 java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
@@ -872,8 +992,8 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
 
         }
-        
-        jt_Super.setModel(new javax.swing.table.DefaultTableModel( new Object[][]{}, new String[]{ "Codigo", "Nivel de Riesgo", "Hackeos Fallidos"}
+
+        jt_Super.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Codigo", "Nivel de Riesgo", "Hackeos Fallidos"}
         ) {
             Class[] types = new Class[]{
                 java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
@@ -907,7 +1027,7 @@ public class Main extends javax.swing.JFrame {
     private void btn_EliminarSHackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EliminarSHackMouseClicked
         AdminHackeo h = new AdminHackeo("./Super.txt");
         h.leerArchivoSuper();
-        
+
         DefaultTableModel model = (DefaultTableModel) jt_Super.getModel();
 
         for (int i = 0; i < h.getHacks_S().size(); i++) {
@@ -916,11 +1036,11 @@ public class Main extends javax.swing.JFrame {
                     h.getHacks_S().remove(i);
                     h.crearArchivoSuper();
                 } catch (IOException ex) {
-                    
+
                 }
             }
         }
-        jt_Super.setModel(new javax.swing.table.DefaultTableModel( new Object[][]{}, new String[]{ "Codigo", "Nivel de Riesgo", "Hackeos Fallidos"}
+        jt_Super.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Codigo", "Nivel de Riesgo", "Hackeos Fallidos"}
         ) {
             Class[] types = new Class[]{
                 java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
@@ -946,9 +1066,54 @@ public class Main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "El sistema de hackeo ha sido eliminado");
     }//GEN-LAST:event_btn_EliminarSHackMouseClicked
 
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        AdminHackeo sh = new AdminHackeo("./Super.txt");
+        sh.leerArchivoSuper();
+        AdminHackeo h = new AdminHackeo("./Regulares.txt");
+        h.leerArchivoRegular();
+
+        DefaultComboBoxModel mod1 = (DefaultComboBoxModel) cb_SimulacionR.getModel();
+        DefaultComboBoxModel mod2 = (DefaultComboBoxModel) cb_Simulacions.getModel();
+
+        for (Regulares r : h.getHacks_R()) {
+            mod1.addElement(r);
+        }
+        cb_SimulacionR.setModel(mod1);
+
+        for (Super s : sh.getHacks_S()) {
+            mod2.addElement(s);
+        }
+        cb_Simulacions.setModel(mod2);
+
+        jd_Simulacion.setModal(true);
+        jd_Simulacion.pack();
+        jd_Simulacion.setLocationRelativeTo(null);
+
+        jd_Simulacion.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        Random random = new Random();
+
+        DefaultComboBoxModel mod1 = (DefaultComboBoxModel) cb_SimulacionR.getModel();
+        Regulares hack = (Regulares) mod1.getSelectedItem();
+
+        int x = 1 + random.nextInt(5);
+
+        if (x == hack.getRiesgo()) {
+            JOptionPane.showMessageDialog(this, "El hackeo se ha detenido");
+        } else {
+
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -990,8 +1155,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btn_ModRHack;
     private javax.swing.JButton btn_ModSHack;
     private javax.swing.JButton btn_Super;
+    private javax.swing.JComboBox<String> cb_SimulacionR;
+    private javax.swing.JComboBox<String> cb_Simulacions;
     private javax.swing.JComboBox<String> cb_Tipo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1000,18 +1169,26 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JDialog jd_ModR;
     private javax.swing.JDialog jd_ModS;
+    private javax.swing.JDialog jd_Simulacion;
     private javax.swing.JTable jt_Regulaes;
     private javax.swing.JTable jt_Super;
+    private javax.swing.JProgressBar pb_BarraRegular;
+    private javax.swing.JProgressBar pb_BarraSuper;
     private javax.swing.JRadioButton rdb_1;
     private javax.swing.JRadioButton rdb_2;
     private javax.swing.JRadioButton rdb_3;
@@ -1033,4 +1210,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tf_ModCodigoS;
     // End of variables declaration//GEN-END:variables
     int flag = 0;
+    AdminProgress admin;
 }
