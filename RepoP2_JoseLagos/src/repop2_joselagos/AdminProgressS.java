@@ -2,15 +2,17 @@ package repop2_joselagos;
 
 import javax.swing.JProgressBar;
 
-public class AdminProgress extends Thread{
+public class AdminProgressS extends Thread{
     private JProgressBar barra;
     private boolean avanzar;
     private boolean vive;
+    private int tiempo;
 
-    public AdminProgress(JProgressBar barra) {
+    public AdminProgressS(JProgressBar barra, int tiempo) {
         this.barra = barra;
         this.avanzar = true;
         this.vive = true;
+        this.tiempo = tiempo;
     }
 
     public JProgressBar getBarra() {
@@ -36,19 +38,28 @@ public class AdminProgress extends Thread{
     public void setVive(boolean vive) {
         this.vive = vive;
     }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+    
     
     @Override
     public void run(){
         while(vive){
             if(avanzar){
                 barra.setValue(barra.getValue()+1);
-                if(barra.getValue()==100000000){
+                if(barra.getValue()==tiempo){
                     vive=false;
                 }                
             } //FIN IF
             
             try {
-                Thread.sleep(0);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
             }
         }

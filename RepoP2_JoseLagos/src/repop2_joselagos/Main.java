@@ -34,6 +34,7 @@ public class Main extends javax.swing.JFrame {
         model.addElement("Super Hack");
         cb_Tipo.setModel(model);
 
+        
     }
 
     /**
@@ -323,6 +324,11 @@ public class Main extends javax.swing.JFrame {
         pb_BarraSuper.setStringPainted(true);
 
         jButton2.setText("Test");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1102,18 +1108,60 @@ public class Main extends javax.swing.JFrame {
         DefaultComboBoxModel mod1 = (DefaultComboBoxModel) cb_SimulacionR.getModel();
         Regulares hack = (Regulares) mod1.getSelectedItem();
 
-        int x = 1 + random.nextInt(5);
+        int x = random.nextInt(6 - 1)+ 1;
 
         if (x == hack.getRiesgo()) {
             JOptionPane.showMessageDialog(this, "El hackeo se ha detenido");
         } else {
+            int num_c = 0;
+            String caracteres = JOptionPane.showInputDialog("Ingrese los caracteres con los que desea probar el hackeo");
+            for (int i = 0; i < caracteres.length(); i++) {
+                num_c++;
+            }
 
         }
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        Random random = new Random();
+        AdminHackeo h = new AdminHackeo("./Super.txt");
+        h.leerArchivoSuper();
+        DefaultComboBoxModel mod = (DefaultComboBoxModel) cb_Simulacions.getModel();
+        Super hack = (Super) mod.getSelectedItem();
+
+        int x = random.nextInt(11 - 6)+ 6;
+
+        System.out.println(x);
+        if (x == hack.getRiesgo()) {
+            JOptionPane.showMessageDialog(this, "El hackeo se ha detenido");
+            for (int i = 0; i < h.getHacks_S().size(); i++) {
+                if(h.getHacks_S().get(i).getCodigo() == hack.getCodigo()){
+                    try {
+                        h.getHacks_S().get(i).setFallidos(h.getHacks_S().get(i).getFallidos()+1);
+                        h.crearArchivoSuper();
+                    } catch (IOException ex) {
+                        
+                    }
+                }
+            }
+            
+        } else {
+            int num_c = 0;
+            String caracteres = JOptionPane.showInputDialog("Ingrese los caracteres con los que desea probar el hackeo");
+            for (int i = 0; i < caracteres.length(); i++) {
+                num_c++;
+            }
+            pb_BarraSuper.setMaximum(num_c);
+            
+            admin = new AdminProgressS(pb_BarraSuper, num_c);
+            
+            admin.start();
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1210,5 +1258,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tf_ModCodigoS;
     // End of variables declaration//GEN-END:variables
     int flag = 0;
-    AdminProgress admin;
+    AdminProgressS admin;
 }
