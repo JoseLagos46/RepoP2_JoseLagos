@@ -2,13 +2,13 @@ package repop2_joselagos;
 
 import javax.swing.JProgressBar;
 
-public class AdminProgressS extends Thread{
+public class AdminProgress extends Thread{
     private JProgressBar barra;
     private boolean avanzar;
     private boolean vive;
     private int tiempo;
 
-    public AdminProgressS(JProgressBar barra, int tiempo) {
+    public AdminProgress(JProgressBar barra, int tiempo) {
         this.barra = barra;
         this.avanzar = true;
         this.vive = true;
@@ -55,6 +55,7 @@ public class AdminProgressS extends Thread{
                 barra.setValue(barra.getValue()+1);
                 if(barra.getValue()==tiempo){
                     vive=false;
+                    
                 }                
             } //FIN IF
             

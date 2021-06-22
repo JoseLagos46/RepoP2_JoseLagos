@@ -8,7 +8,6 @@ package repop2_joselagos;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -765,7 +764,43 @@ public class Main extends javax.swing.JFrame {
         AdminHackeo hs = new AdminHackeo("./Super.txt");
         h.leerArchivoRegular();
         hs.leerArchivoSuper();
+        
+        jt_Regulaes.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Codigo", "Nivel de Riesgo", "Hackeos Exitosos"}
+        ) {
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
 
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+        
+        jt_Super.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{}, new String[]{"Codigo", "Nivel de Riesgo", "Hackeos Fallidos"}
+        ) {
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+        
         for (Regulares r : h.getHacks_R()) {
             DefaultTableModel modelo = (DefaultTableModel) jt_Regulaes.getModel();
             Object[] newrow = {r.getCodigo(), r.getRiesgo(), r.getExito()};
@@ -1104,7 +1139,8 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         Random random = new Random();
-
+        AdminHackeo h = new AdminHackeo("./Regular.txt");
+        h.leerArchivoRegular();
         DefaultComboBoxModel mod1 = (DefaultComboBoxModel) cb_SimulacionR.getModel();
         Regulares hack = (Regulares) mod1.getSelectedItem();
 
@@ -1113,12 +1149,31 @@ public class Main extends javax.swing.JFrame {
         if (x == hack.getRiesgo()) {
             JOptionPane.showMessageDialog(this, "El hackeo se ha detenido");
         } else {
+            
             int num_c = 0;
             String caracteres = JOptionPane.showInputDialog("Ingrese los caracteres con los que desea probar el hackeo");
             for (int i = 0; i < caracteres.length(); i++) {
                 num_c++;
             }
-
+            
+            for (int i = 0; i < h.getHacks_R().size(); i++) {
+                if(h.getHacks_R().get(i).getCodigo() == hack.getCodigo()){
+                    try {
+                        h.getHacks_R().get(i).setExito(h.getHacks_R().get(i).getExito()+1);
+                        h.crearArchivoSuper();
+                    } catch (IOException ex) {
+                        
+                    }
+                }
+            }
+            
+            int tiempo = num_c*2;
+            pb_BarraRegular.setMaximum(tiempo);
+            
+            admin = new AdminProgress(pb_BarraRegular, tiempo);
+            
+            admin.start();
+            
         }
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -1153,9 +1208,10 @@ public class Main extends javax.swing.JFrame {
             }
             pb_BarraSuper.setMaximum(num_c);
             
-            admin = new AdminProgressS(pb_BarraSuper, num_c);
+            admin = new AdminProgress(pb_BarraSuper, num_c);
             
-            admin.start();
+            admin.start();          
+            
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -1258,5 +1314,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tf_ModCodigoS;
     // End of variables declaration//GEN-END:variables
     int flag = 0;
-    AdminProgressS admin;
+    AdminProgress admin;
 }
